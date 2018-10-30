@@ -1,8 +1,8 @@
-app.controller('listarUsuarioCtrl', ['$scope', '$http',
-    function ($scope, $http) {
+app.controller('listarUsuarioCtrl', ['$scope', '$http','urlApi',
+    function ($scope, $http,urlApi) {
         $scope.teste = 'teste';
 
-        $http.get('api/usuario/').then(function (response) {
+        $http.get(urlApi+'/usuario/').then(function (response) {
 
             $scope.usuarios = response.data;
 
@@ -11,15 +11,15 @@ app.controller('listarUsuarioCtrl', ['$scope', '$http',
 
         });
     }])
-    .controller('cadastrarUsuarioCtrl', ['$scope', '$http', '$window', 'notificationService',
-        function ($scope, $http, $window, notificationService) {
+    .controller('cadastrarUsuarioCtrl', ['$scope', '$http', '$window', 'notificationService','urlApi',
+        function ($scope, $http, $window, notificationService, urlApi) {
 
             $scope.cadastrarUsuario = function () {
                 console.log($scope.usuario);
                 $scope.usuario.funcao = parseInt($scope.usuario.funcao);
                 $http({
                     method: 'POST',
-                    url: 'api/usuario/',
+                    url: urlApi+'/usuario/',
                     data: $scope.usuario
                 }).then(
                     function (response) {
@@ -36,10 +36,10 @@ app.controller('listarUsuarioCtrl', ['$scope', '$http',
             }
 
         }])
-    .controller('usuarioCtrl', ['$scope', '$http', '$window', '$routeParams',
-        function ($scope, $http, $window, $routeParams) {
+    .controller('usuarioCtrl', ['$scope', '$http', '$window', '$routeParams','urlApi',
+        function ($scope, $http, $window, $routeParams, urlApi) {
 
-            $http.get('api/usuario/' + $routeParams.id).then(function (response) {
+            $http.get(urlApi+'/usuario/' + $routeParams.id).then(function (response) {
 
                 $scope.usuario = response.data;
             });

@@ -1,4 +1,5 @@
 var app = angular.module("myApp", ["ngRoute", "jlareau.pnotify"]);
+app.value('urlApi', 'api')
 app.config(function ($routeProvider, $locationProvider) {
     $routeProvider
         .when("/", {
@@ -216,6 +217,7 @@ app.config(function ($routeProvider, $locationProvider) {
     })
 });
 app.run(function ($window, $rootScope) {
+
     $rootScope.funcaoUsuario = parseInt($window.localStorage.getItem("funcaoUsuario"));
 
     $rootScope.isLoggedin = $window.localStorage.getItem("isLoggedin");

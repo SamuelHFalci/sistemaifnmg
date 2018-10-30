@@ -1,8 +1,8 @@
-app.controller('listarAlunoCtrl', ['$scope', '$http', '$window',
-    function ($scope, $http, $window) {
+app.controller('listarAlunoCtrl',  ['$scope', '$http', '$window','urlApi',
+    function ($scope, $http, $window, urlApi) {
         $scope.teste = 'teste';
         console.log($window.localStorage.getItem("funcaoUsuario"));
-        $http.get('api/aluno/').then(function (response) {
+        $http.get(urlApi+'/aluno/').then(function (response) {
 
             $scope.alunos = response.data;
             console.log($scope.alunos);
@@ -11,8 +11,8 @@ app.controller('listarAlunoCtrl', ['$scope', '$http', '$window',
 
         });
     }])
-    .controller('cadastrarAlunoCtrl', ['$scope', '$http', '$window', 'notificationService',
-        function ($scope, $http, $window, notificationService) {
+    .controller('cadastrarAlunoCtrl', ['$scope', '$http', '$window', 'notificationService', 'urlApi',
+        function ($scope, $http, $window, notificationService, urlApi) {
 
             $scope.cadastrarAluno = function () {
                 if ($scope.formCadastroAluno.$invalid)
@@ -20,14 +20,14 @@ app.controller('listarAlunoCtrl', ['$scope', '$http', '$window',
 
                 $http({
                     method: 'POST',
-                    url: 'api/aluno/',
+                    url: urlApi+'/aluno/',
                     data: $scope.aluno
                 }).then(
                     function (response) {
 
                         notificationService.success('Success!!!');
-                        //$window.location.href = '/sistemaifnmg/#!/aluno';
-                        console.log("tests");
+                        $window.location.href = '/sistemaifnmg/#!/aluno';
+
 
                     }, function (error) {
                         var data = error.data;
@@ -37,10 +37,10 @@ app.controller('listarAlunoCtrl', ['$scope', '$http', '$window',
             }
 
         }])
-    .controller('ocorrenciaAlunoCtrl', ['$scope', '$http', '$window', '$routeParams',
-        function ($scope, $http, $window, $routeParams) {
+    .controller('ocorrenciaAlunoCtrl', ['$scope', '$http', '$window', '$routeParams','urlApi',
+        function ($scope, $http, $window, $routeParams, urlApi) {
 
-            $http.get('api/aluno/' + $routeParams.id).then(function (response) {
+            $http.get(urlApi+'/aluno/' + $routeParams.id).then(function (response) {
 
                 $scope.ocorrencias = response.data;
             });
@@ -48,7 +48,7 @@ app.controller('listarAlunoCtrl', ['$scope', '$http', '$window',
                 ocorrencia.confirmacao = 1;
                 $http({
                     method: 'PUT',
-                    url: 'api/ocorrenciaaluno/' + $routeParams.id,
+                    url: urlApi+'/ocorrenciaaluno/' + $routeParams.id,
                     data: ocorrencia
                 }).then(function (response) {
                     console.log(response);
@@ -59,10 +59,10 @@ app.controller('listarAlunoCtrl', ['$scope', '$http', '$window',
             }
 
         }])
-    .controller('provaAlunoCtrl', ['$scope', '$http', '$window', '$routeParams',
-        function ($scope, $http, $window, $routeParams) {
+    .controller('provaAlunoCtrl', ['$scope', '$http', '$window', '$routeParams','urlApi',
+        function ($scope, $http, $window, $routeParams, urlApi) {
 
-            $http.get('api/aluno/' + $routeParams.id+'/prova').then(function (response) {
+            $http.get(urlApi+'/aluno/' + $routeParams.id+'/prova').then(function (response) {
 
                 $scope.provas = response.data;
                 $scope.hoje = new Date().getDate();

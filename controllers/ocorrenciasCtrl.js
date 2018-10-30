@@ -1,8 +1,8 @@
-app.controller('listarOcorrenciaCtrl', ['$scope', '$http',
-    function ($scope, $http) {
+app.controller('listarOcorrenciaCtrl', ['$scope', '$http','urlApi',
+    function ($scope, $http, urlApi) {
 
 
-        $http.get('api/ocorrencia/').then(function (response) {
+        $http.get(urlApi+'/ocorrencia/').then(function (response) {
 
             $scope.ocorrencias = response.data;
         }, function (response) {
@@ -10,12 +10,12 @@ app.controller('listarOcorrenciaCtrl', ['$scope', '$http',
 
         });
     }])
-    .controller('cadastrarOcorrenciaCtrl', ['$scope', '$http', '$window', 'notificationService','$location',
-        function ($scope, $http, $window, notificationService, $location) {
+    .controller('cadastrarOcorrenciaCtrl', ['$scope', '$http', '$window', 'notificationService','$location', 'urlApi',
+        function ($scope, $http, $window, notificationService, $location, urlApi) {
 
             $scope.alunos = [];
             $scope.alunosAdicionados = [];
-            $http.get('api/aluno/').then(function (response) {
+            $http.get(urlApi+'/aluno/').then(function (response) {
                 $scope.alunos = response.data;
 
             }, function (response) {
@@ -48,7 +48,7 @@ app.controller('listarOcorrenciaCtrl', ['$scope', '$http',
                 $scope.ocorrencia.alunos = $scope.alunosAdicionados;
                 $http({
                     method: 'POST',
-                    url: 'api/ocorrencia/',
+                    url: urlApi+'/ocorrencia/',
                     data: $scope.ocorrencia
                 }).then(function (response) {
                     console.log(response);
@@ -59,16 +59,17 @@ app.controller('listarOcorrenciaCtrl', ['$scope', '$http',
             }
 
         }])
-    .controller('ocorrenciaCtrl', ['$scope', '$http', '$window', '$routeParams',
-        function ($scope, $http, $window, $routeParams) {
+    .controller('ocorrenciaCtrl', ['$scope', '$http', '$window', '$routeParams','urlApi',
+        function ($scope, $http, $window, $routeParams, urlApi) {
 
-            $http.get('api/ocorrencia/'+ $routeParams.id).then(function (response) {
+            $http.get(urlApi+'/ocorrencia/'+ $routeParams.id).then(function (response) {
                 $scope.ocorrencia = response.data;
             });
 
 
 
-        }]).controller('relatorioOcorrenciaCtrl', ['$scope', '$http', '$window', '$routeParams',
+        }])
+    .controller('relatorioOcorrenciaCtrl', ['$scope', '$http', '$window', '$routeParams',
         function ($scope, $http, $window, $routeParams) {
 
             // $http.get('api/ocorrencia/'+ $routeParams.id).then(function (response) {

@@ -1,8 +1,8 @@
-app.controller('listarServidorCtrl', ['$scope', '$http',
-    function ($scope, $http) {
+app.controller('listarServidorCtrl', ['$scope', '$http','urlApi',
+    function ($scope, $http, urlApi) {
         $scope.teste = 'teste';
 
-        $http.get('api/servidor/').then(function (response) {
+        $http.get(urlApi+'/servidor/').then(function (response) {
 
             $scope.servidores = response.data;
             console.log($scope.servidores);
@@ -11,14 +11,14 @@ app.controller('listarServidorCtrl', ['$scope', '$http',
 
         });
     }])
-    .controller('cadastrarServidorCtrl', ['$scope', '$http', '$window', 'notificationService',
-        function ($scope, $http, $window, notificationService) {
+    .controller('cadastrarServidorCtrl', ['$scope', '$http', '$window', 'notificationService','urlApi',
+        function ($scope, $http, $window, notificationService, urlApi) {
 
             $scope.cadastrarServidor = function () {
                 console.log($scope.servidor);
                 $http({
                     method: 'POST',
-                    url: 'api/servidor/',
+                    url: urlApi+'/servidor/',
                     data: $scope.servidor
                 }).then(
                     function (response) {
@@ -35,10 +35,10 @@ app.controller('listarServidorCtrl', ['$scope', '$http',
             }
 
         }])
-    .controller('servidorCtrl', ['$scope', '$http', '$window', '$routeParams',
-        function ($scope, $http, $window, $routeParams) {
+    .controller('servidorCtrl', ['$scope', '$http', '$window', '$routeParams','urlApi',
+        function ($scope, $http, $window, $routeParams,urlApi) {
 
-            $http.get('api/servidor/' + $routeParams.id).then(function (response) {
+            $http.get(urlApi+'/servidor/' + $routeParams.id).then(function (response) {
 
                 $scope.servidor = response.data;
             });

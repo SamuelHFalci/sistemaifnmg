@@ -1,11 +1,11 @@
-app.controller('loginCtrl', ['$scope', '$http', '$window', 'notificationService', '$rootScope', '$location',
-    function ($scope, $http, $window, notificationService, $rootScope, $location) {
+app.controller('loginCtrl', ['$scope', '$http', '$window', 'notificationService', '$rootScope', '$location','urlApi',
+    function ($scope, $http, $window, notificationService, $rootScope, $location, urlApi) {
         $scope.credenciais = {};
         $scope.funcaoUsuario = null;
         $scope.login = function () {
             $http({
                 method: 'POST',
-                url: 'api/login/',
+                url: urlApi+'/login/',
                 data: $scope.credenciais
             }).then(
                 function (response) {

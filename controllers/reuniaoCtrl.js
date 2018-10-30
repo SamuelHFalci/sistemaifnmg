@@ -1,7 +1,7 @@
-app.controller('listarReuniaoCtrl', ['$scope', '$http', '$location',
-    function ($scope, $http, $location) {
+app.controller('listarReuniaoCtrl', ['$scope', '$http', '$location', 'urlApi',
+    function ($scope, $http, $location, urlApi) {
 
-        $http.get('api/reuniao/').then(function (response) {
+        $http.get(urlApi+'/reuniao/').then(function (response) {
 
             $scope.reunioes = response.data;
             console.log($scope.reunioes);
@@ -10,12 +10,12 @@ app.controller('listarReuniaoCtrl', ['$scope', '$http', '$location',
 
         });
     }])
-    .controller('cadastrarReuniaoCtrl', ['$scope', '$http', '$window', 'notificationService', '$location',
-        function ($scope, $http, $window, notificationService, $location) {
+    .controller('cadastrarReuniaoCtrl', ['$scope', '$http', '$window', 'notificationService', '$location','urlApi',
+        function ($scope, $http, $window, notificationService, $location, urlApi) {
 
             $scope.servidores = [];
             $scope.servidoresAdicionados = [];
-            $http.get('api/servidor/').then(function (response) {
+            $http.get(urlApi+'/servidor/').then(function (response) {
                 $scope.servidores = response.data;
                 console.log($scope.servidores);
             }, function (response) {
@@ -42,13 +42,10 @@ app.controller('listarReuniaoCtrl', ['$scope', '$http', '$location',
             }
 
             $scope.cadastrarReuniao = function () {
-
-                console.log($scope.servidoresAdicionados);
-
                 $scope.reuniao.servidores = $scope.servidoresAdicionados;
                 $http({
                     method: 'POST',
-                    url: 'api/reuniao/',
+                    url: urlApi+'/reuniao/',
                     data: $scope.reuniao
                 }).then(function (response) {
                     console.log(response);
@@ -58,10 +55,10 @@ app.controller('listarReuniaoCtrl', ['$scope', '$http', '$location',
                 });
             }
         }])
-    .controller('reuniaoCtrl', ['$scope', '$http', '$window', '$routeParams', '$filter',
-        function ($scope, $http, $window, $routeParams, $filter) {
+    .controller('reuniaoCtrl', ['$scope', '$http', '$window', '$routeParams', '$filter','urlApi',
+        function ($scope, $http, $window, $routeParams, $filter, urlApi) {
 
-            $http.get('api/reuniao/' + $routeParams.id).then(function (response) {
+            $http.get(urlApi+'/reuniao/' + $routeParams.id).then(function (response) {
 
                 $scope.reuniao = response.data;
             });
@@ -72,7 +69,7 @@ app.controller('listarReuniaoCtrl', ['$scope', '$http', '$location',
 
                 $http({
                     method: 'POST',
-                    url: 'api/email/',
+                    url: urlApi+'/email/',
                     data: reuniao
                 }).then(
                     function (response) {
