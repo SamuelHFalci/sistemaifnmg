@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Ifnmg</title>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="bower_components/components-font-awesome/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="bower_components/pnotify/dist/pnotify.css">
+    <link rel="stylesheet" href="bower_components/pnotify/dist/pnotify.buttons.css">
+    <link rel="stylesheet" href="bower_components/trix/dist/trix.css">
+    <script src="bower_components/trix/dist/trix.js"></script>
+
+
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+
+
+</head>
+<body ng-app="myApp" ng-controller="navigationCtrl">
+<div class="top" ng-show="isLoggedin">
+    <div class="container-fluid">
+        <span>Sistema de gestão Institucional - IFNMG</span>
+        <a href="/sistemaifnmg/#!/logout/" class="pull-right">Sair</a>
+    </div>
+</div>
+<div class="sidebar" ng-show="isLoggedin">
+    <div class="margin-bottom20" ng-show="funcaoUsuario == 1 || funcaoUsuario == 2">
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel" ng-repeat="m in menu">
+
+                <div class="panel-heading" role="tab" id="headingOne">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion"
+                           data-target="#menu{{$index}}"
+                           aria-expanded="true" aria-controls="collapseOne">
+                            {{m.title}}
+                        </a>
+                    </h4>
+                </div>
+                <div id="menu{{$index}}" class="panel-collapse collapse {{$index == 0? 'in': ''}}" role="tabpanel">
+                    <div class="panel-body">
+                        <div ng-repeat="sub in m.submenus">
+                            <a href="{{sub.link}}">{{sub.title}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="margin-bottom20" ng-show="funcaoUsuario == 4">
+        <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
+            <div class="panel">
+
+                <div class="panel-heading" role="tab">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#accordion2"
+                           data-target="#menuProva"
+                           aria-expanded="true" aria-controls="collapseOne">
+                            Prova
+                        </a>
+                    </h4>
+                </div>
+                <div id="menuProva" class="panel-collapse collapse" role="tabpanel">
+                    <div class="panel-body">
+                        <div>
+                            <a href="/sistemaifnmg/#!/prova/cadastrar">Marcar Prova</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ng-view {{!isLoggedin ? 'fullwidth': ''}}"></div>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="js/app.js"></script>
+<script src="controllers/ocorrenciasCtrl.js"></script>
+<script src="controllers/alunoCtrl.js"></script>
+<script src="controllers/servidorCtrl.js"></script>
+<script src="controllers/usuarioCtrl.js"></script>
+<script src="controllers/reuniaoCtrl.js"></script>
+<script src="controllers/loginCtrl.js"></script>
+<script src="controllers/provaCtrl.js"></script>
+<script src="controllers/navigationCtrl.js"></script>
+<script src="directives/datepicker.js"></script>
+
+
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+<script src="bower_components/pnotify/dist/pnotify.js"></script>
+<script src="bower_components/pnotify/dist/pnotify.confirm.js"></script>
+<script src="bower_components/pnotify/dist/pnotify.buttons.js"></script>
+<script src="bower_components/angular-pnotify/src/angular-pnotify.js"></script>
+
+
+</body>
+</html>

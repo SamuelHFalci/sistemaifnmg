@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <ol class="breadcrumb">
+        <li><a href="/sistemaifnmg/#!/ocorrencia/">Ocorrência</a></li>
+        <li class="active">Listar</li>
+    </ol>
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Procurar Ocorrência:</label>
+            <div class="col-sm-8">
+                <input ng-model="searchText" class="form-control">
+            </div>
+            <div class="col-sm-2"><a class="btn btn-success" href="/sistemaifnmg/#!/ocorrencia/cadastrar">Cadastrar</a></div>
+        </div>
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Titulo da Ocorrência</th>
+            <th>Tipo</th>
+            <th>Descrição da Ocorrencia</th>
+            <th>Data</th>
+            <th>Alunos Envolvidos</th>
+        </tr>
+        <tr ng-repeat="o in ocorrencias | filter:searchText">
+            <td>{{o.titulo}}</td>
+            <td>{{o.tipo == 1 ? 'Não Disciplinar' : o.tipo == 2 ? 'Disciplinar Leve' : o.tipo == 3 ?"Disciplinar Grave":"Disciplinar Gravíssima"}}</td>
+            <td>{{o.descricao}}</td>
+            <td>{{o.data | date: "dd/MM/yyyy"}}</td>
+            <td>
+                <a class="btn btn-success" href="/sistemaifnmg/#!/ocorrencia/{{o.id}}">Alunos Envolvidos</a>
+            </td>
+        </tr>
+        </thead>
+    </table>
+</div>

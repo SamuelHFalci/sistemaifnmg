@@ -1,0 +1,56 @@
+<div class="container-fluid">
+    <ol class="breadcrumb">
+        <li><a href="/sistemaifnmg/#!/servidor/">Servidor</a></li>
+        <li class="active">Cadastrar</li>
+    </ol>
+    <p class="h3 text-center">Cadastrar Servidor</p>
+    <form action="">
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome" placeholder="Nome" ng-model="servidor.nome">
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="sobrenome">Sobrenome</label>
+                <input type="text" class="form-control" id="sobrenome" placeholder="Sobrenome"
+                       ng-model="servidor.sobrenome">
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="matricula">Matrícula</label>
+                <input type="text" class="form-control" id="matricula" placeholder="Matricula"
+                       ng-model="servidor.matricula">
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="cargo">Cargo</label>
+                <select id="cargo" ng-model="servidor.cargo" class="form-control">
+                    <option value="1" ng-if="funcaoUsuario == 1">Administrador</option>
+                    <option value="2">Servidor</option>
+                    <option value="4">Professor</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Email" ng-model="servidor.email">
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" class="form-control" id="senha" placeholder="Senha" ng-model="servidor.senha">
+            </div>
+        </div>
+        <div class="col-sm-4 col-sm-offset-4">
+            <button type="submit" class="btn btn-success form-control" ng-click="cadastrarServidor()">Cadastrar Servidor</button>
+        </div>
+
+    </form>
+</div>

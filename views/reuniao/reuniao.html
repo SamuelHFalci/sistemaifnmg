@@ -1,0 +1,24 @@
+<div class="container">
+    <h1>{{reuniao.titulo}} {{reuniao.data | date: "dd/MM/yyyy"}}</h1>
+    <h2>{{reuniao.tipo}}</h2>
+    <p>{{reuniao.descricao}}</p>
+    <hr>
+    <h2>Servidores Convidados</h2>
+    <table class="table table striped">
+        <tr>
+            <td>Matricula</td>
+            <td>Nome</td>
+            <td>Email</td>
+        </tr>
+        <tr ng-repeat="s in reuniao.servidores">
+            <td>{{s.servidorfk.matricula}}</td>
+            <td>{{s.servidorfk.nome}} {{s.servidorfk.sobrenome}}</td>
+            <td>{{s.servidorfk.email}}</td>
+        </tr>
+    </table>
+    <div class="col-sm-6">
+        <label for="">Corpo do email</label>
+        <textarea ng-model="reuniao.corpoEmail" class="form-control"></textarea>
+    </div>
+    <button ng-click="enviarEmail(reuniao, corpoEmail)">Enviar Email</button>
+</div>

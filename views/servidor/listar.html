@@ -1,0 +1,30 @@
+<div class="container-fluid">
+    <ol class="breadcrumb">
+        <li><a href="/sistemaifnmg/#!/servidor/">Servidor</a></li>
+        <li class="active">Listar</li>
+    </ol>
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Procurar Servidor:</label>
+            <div class="col-sm-8">
+                <input ng-model="searchText" class="form-control">
+            </div>
+            <div class="col-sm-2"><a class="btn btn-success" href="/sistemaifnmg/#!/servidor/cadastrar/">Cadastrar
+                Servidor</a></div>
+        </div>
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nome do Servidor</th>
+            <th>Cargo</th>
+            <th>Matrícula</th>
+        </tr>
+        <tr ng-repeat="s in servidores | filter:searchText">
+            <td>{{s.nome + " "+ s.sobrenome}}</td>
+            <td>{{s.cargo == 1 ? "Administrador": s.cargo == 2 ? "Servidor" : "Professor"}}</td>
+            <td>{{s.matricula}}</td>
+        </tr>
+        </thead>
+    </table>
+</div>

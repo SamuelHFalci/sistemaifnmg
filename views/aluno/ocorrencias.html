@@ -1,0 +1,55 @@
+<div class="container-fluid">
+    <p class="h2">Aluno: {{ocorrencias.nome+" "+ocorrencias.sobrenome}}</p>
+    <div class="ocorrencias borda margin-bottom20">
+        <p class="h3">Ocorrências:</p>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>Tipo</th>
+                <th>Descrição</th>
+                <th>Data</th>
+                <th>Confirmacao</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="ocorrencia in ocorrencias.ocorrencias">
+                <td>{{ocorrencia.ocorrenciafk.titulo}}</td>
+                <td>{{ocorrencia.ocorrenciafk.tipo == 1 ? 'Não Disciplinar' : ocorrencia.ocorrenciafk.tipo == 2 ?
+                    'Disciplinar Leve' : ocorrencia.ocorrenciafk.tipo == 3 ?"Disciplinar Grave":"Disciplinar Gravíssima"}}
+                </td>
+                <td>{{ocorrencia.ocorrenciafk.descricao}}</td>
+                <td>
+                    {{ocorrencia.ocorrenciafk.data | date: 'dd/MM/yyyy'}}
+                </td>
+                <td ng-if="ocorrencia.confirmacao == 0 && funcaoUsuario == 3">
+                    <button class="btn btn-success pull-right" ng-click="confirmarOcorrencia(ocorrencia)"><i
+                            class="fa fa-check"></i></button>
+                </td>
+                <td ng-if="ocorrencia.confirmacao == 0 && funcaoUsuario != 3">Não Confirmada</td>
+                <td ng-if="ocorrencia.confirmacao == 1">Confirmada</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div ng-controller="provaAlunoCtrl" class="borda">
+        <h2>Provas</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Tema</th>
+                <th>Disciplina</th>
+                <th>Data</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="p in provas">
+                <td>{{p.tema}}</td>
+                <td>{{p.disciplina}}</td>
+                <td>{{p.data | date: "dd/MM/yyyy"}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

@@ -1,0 +1,48 @@
+<div class="container-fluid">
+    <ol class="breadcrumb">
+        <li><a href="/sistemaifnmg/#!/prova/">Prova</a></li>
+        <li class="active">Cadastrar</li>
+    </ol>
+    <p class="h3 text-center">Cadastrar Prova</p>
+    <form name="formCadastroProva">
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="tema">Tema</label>
+                <input type="text" class="form-control" id="tema" name="tema" placeholder="Tema" ng-model="prova.tema" required>
+
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="turma">Turma</label>
+                <input type="text" class="form-control" id="turma" placeholder="Turma"
+                       ng-model="prova.turma" required>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="curso">Curso</label>
+                <input type="Curso" class="form-control" id="curso" placeholder="Curso"
+                       ng-model="prova.curso" required>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="data">Data</label>
+                <input type="date" class="form-control" id="data" placeholder="Data"
+                       ng-model="prova.data" required>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="disciplina">Disciplina</label>
+                <input type="text" class="form-control" id="disciplina" placeholder="Disciplina" ng-model="prova.diciplina" required>
+            </div>
+        </div>
+
+        <div class="col-sm-4 col-sm-offset-4">
+            <button type="submit" class="btn btn-success form-control" ng-click="cadastrarProva()">Cadastrar Prova</button>
+        </div>
+
+    </form>
+</div>

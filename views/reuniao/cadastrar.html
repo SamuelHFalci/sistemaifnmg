@@ -1,0 +1,83 @@
+<div class="container-fluid">
+    <div class="form-group">
+        <ol class="breadcrumb">
+            <li><a href="/sistemaifnmg/#!/reuniao/">Reunião</a></li>
+            <li class="active">Listar</li>
+        </ol>
+        <p class="h3">Cadastro de Reunião</p>
+        <div class="col-sm-4">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="titulo">Titulo</label>
+                    <input type="text" class="form-control" id="titulo" placeholder="Titulo" ng-model="reuniao.titulo">
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="tipo">Tipo</label>
+                    <input type="text" class="form-control" id="tipo" placeholder="Tipo" ng-model="reuniao.tipo">
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="descricao">Data</label>
+                    <input type="date" class="form-control" ng-model="reuniao.data" name="data">
+
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label for="descricao">Descricao</label>
+                    <textarea class="form-control" id="descricao" placeholder="Descricao" ng-model="reuniao.descricao"
+                              rows="5"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label>Procurar Servidor</label>
+                    <input ng-model="searchText" type="text" class="form-control" placeholder="Procurar Servidor">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <table class="table table-striped">
+                    <tr>
+                        <td>Nome:</td>
+                        <td class="text-right">Adicionar:</td>
+                    </tr>
+                    <tr ng-repeat="servidor in servidores | filter:searchText">
+                        <td>{{servidor.nome}} {{servidor.sobrenome}}</td>
+                        <td class="text-right">
+                            <button class="btn btn-primary" ng-click="adicionarServidor(servidor)"><i
+                                    class="fa fa-plus"></i></button>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+            <div class="col-sm-6">
+
+                <table class="table table-striped">
+                    <tr>
+                        <td>Nome:</td>
+                        <td class="text-right">Remover:</td>
+                    </tr>
+                    <tr ng-repeat="servidorAdicionado in servidoresAdicionados">
+                        <td>{{servidorAdicionado.nome}} {{servidorAdicionado.sobrenome}}</td>
+                        <td class="text-right">
+                            <button class="btn btn-danger" ng-click="excluirServidor(servidorAdicionado)"><i
+                                    class="fa fa-minus"></i></button>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+
+        </div>
+        <div class="col-sm-12">
+            <button class="btn btn-default" ng-click="cadastrarReuniao()">Cadastrar Reunião</button>
+        </div>
+        </form>
+    </div>
+</div>

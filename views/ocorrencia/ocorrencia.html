@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <p class="h3">Ocorrência: {{ocorrencia.titulo}}</p>
+    <p class="h4">Descrição: {{ocorrencia.descricao}}</p>
+    <p class="h4">Tipo: {{ocorrencia.tipo == 1 ? 'Não Disciplinar' : ocorrencia.tipo == 2 ? 'Disciplinar Leve' : ocorrencia.tipo == 3 ?"Disciplinar Grave":"Disciplinar Gravíssima"}}</p>
+    <p class="h4">Data: {{ocorrencia.data | date: "dd/MM/yyyy"}}</p>
+    <div class="ocorrencias borda">
+        <h4>Alunos Envolvidos:</h4>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Matrícula</th>
+                <th>Nome</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="aluno in ocorrencia.alunos">
+                <td>{{aluno.alunofk.matricula}}</td>
+                <td>{{aluno.alunofk.nome+" "+aluno.alunofk.sobrenome}}</td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

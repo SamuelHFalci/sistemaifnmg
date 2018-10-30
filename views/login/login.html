@@ -1,0 +1,28 @@
+<div class="container-fluid login">
+    <div class="form-login">
+            <div class="form-group">
+                <label for="login">Login</label>
+                <input type="text" id="login" class="form-control" ng-model="credenciais.email">
+            </div>
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" class="form-control" ng-model="credenciais.senha">
+            </div>
+        <div class="form-group">
+                <label for="tipoLogin">Logar Como</label>
+            <select id="tipoLogin" ng-model="credenciais.tipoLogin" class="form-control">
+                <option value="1">Administrador</option>
+                <option value="2">Servidor</option>
+                <option value="3">Aluno</option>
+                <option value="4">Professor</option>
+            </select>
+
+            </div>
+            <button class="btn btn-success form-control" ng-click="login(credenciais)">Entrar</button>
+        <div ng-show="erroLogin" style="margin-top: 20px">
+            <p class="h5 bg-danger text-center" style="padding: 20px">
+                Login Inválido
+            </p>
+        </div>
+    </div>
+</div>

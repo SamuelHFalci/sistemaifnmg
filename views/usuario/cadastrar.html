@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <ol class="breadcrumb">
+        <li><a href="#">Usuário</a></li>
+        <li class="active">Cadastrar</li>
+    </ol>
+    <p class="h3 text-center">Cadastrar Usuário</p>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" class="form-control" id="nome" placeholder="Nome" ng-model="usuario.nome">
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label for="sobrenome">Sobrenome</label>
+            <input type="text" class="form-control" id="sobrenome" placeholder="Sobrenome" ng-model="usuario.sobrenome">
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            <label for="funcao">Funcao</label>
+            <select id="funcao" ng-model="usuario.funcao" class="form-control">
+                <option value="1">Administrador</option>
+                <option value="2">Servidor</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Email" ng-model="usuario.email">
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="senha">Senha</label>
+            <input type="password" class="form-control" id="senha" placeholder="Senha" ng-model="usuario.senha">
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <button type="submit" class="btn btn-success" ng-click="cadastrarUsuario()">Cadastrar Usuario</button>
+    </div>
+
+
+</div>

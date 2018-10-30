@@ -1,0 +1,120 @@
+.nav li a {
+    background-color: #2ca02c;
+    color: #fff;
+}
+ul{
+    list-style-type: none;
+}
+.nav li a:hover {
+    background-color: #fff;
+    color: #2ca02c;
+}
+.top{
+    padding:20px 0px;
+    background-color: #2ca02c;
+    border-bottom: 2px solid #2ca029;
+}
+.top span{
+    color: #fff;
+    font-size: 15pt;
+}
+.top a{
+    font-size: 12pt;
+}
+.ng-view{
+    width:85%;
+    float: left;
+    padding-top: 20px;
+}
+.fullwidth{
+    width: 100% !important;
+}
+.form-login {
+    padding: 40px;
+    width: 400px;
+    height: 350px;
+    margin-left: -200px; /* metade da largura */
+    margin-top: -175px; /* metade da altura */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1px solid #2ca02c;
+}
+.sidebar{
+    width:15%;
+    float: left;
+    background-color: #2ca02c;
+    min-height: 100vh;
+}
+.sidebar a{
+    color: #fff;
+}
+.panel{
+    background-color: #3c763d;
+}
+.panel-group .panel+.panel {
+    margin-top: 0px;
+}
+.panel-group .panel {
+    margin-bottom: 0;
+    border-radius: 0px;
+}
+.panel-body{
+    background-color: #2ca02c;
+}
+.panel-group .panel-heading+.panel-collapse>.list-group, .panel-group .panel-heading+.panel-collapse>.panel-body {
+    border-top: none;
+}
+.center-pills {
+    display: flex;
+    justify-content: center;
+}
+
+.margin-bottom20 {
+    margin-bottom: 20px;
+}
+.margin-bottom40 {
+    margin-bottom: 40px;
+}
+
+h2 {
+    color: #2ca02c;
+}
+
+.borda {
+    border: 1px solid #2ca02c;
+    border-radius: 10px;
+    padding: 0px 5px 5px 5px;
+
+}
+
+a {
+    color: #fff;
+}
+.botao{
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 15px 0px;
+}
+.botao p{
+    font-size: 16px;
+}
+.botao span{
+    font-size: 40px;
+}
+.textoPreto{
+    color: #000;
+}
+.tabela-adicionar{
+    height: 350px;
+    overflow: auto
+}
+.breadcrumb{
+    background-color: #fff;
+}
+.breadcrumb li a{
+    color: #2ca02c;
+}
+input.ng-touched.ng-invalid{
+    border-color: #F99
+}
