@@ -44,17 +44,17 @@ app.config(function ($routeProvider, $locationProvider) {
             },
             templateUrl: "views/ocorrencia/cadastrar.html",
             controller: "cadastrarOcorrenciaCtrl"
-        }) .when("/ocorrencia/relatorio/", {
-            resolve: {
-                'check': function ($location, $window) {
-                    if ($window.localStorage.getItem("isLoggedin") != 'true' || $window.localStorage.getItem("funcaoUsuario") == 3) {
-                        $location.path('/');
-                    }
+        }).when("/ocorrencia/relatorio/", {
+        resolve: {
+            'check': function ($location, $window) {
+                if ($window.localStorage.getItem("isLoggedin") != 'true' || $window.localStorage.getItem("funcaoUsuario") == 3) {
+                    $location.path('/');
                 }
-            },
-            templateUrl: "views/ocorrencia/relatorio.html",
-            controller: "relatorioOcorrenciaCtrl"
-        })
+            }
+        },
+        templateUrl: "views/ocorrencia/relatorio.html",
+        controller: "relatorioOcorrenciaCtrl"
+    })
         .when("/ocorrencia/:id/", {
             resolve: {
                 'check': function ($location, $window) {
@@ -65,7 +65,17 @@ app.config(function ($routeProvider, $locationProvider) {
             },
             templateUrl: "views/ocorrencia/ocorrencia.html",
             controller: "ocorrenciaCtrl"
-        })
+        }).when("/ocorrencia/:id/editar", {
+        resolve: {
+            'check': function ($location, $window) {
+                if ($window.localStorage.getItem("isLoggedin") != 'true' || $window.localStorage.getItem("funcaoUsuario") == 3) {
+                    $location.path('/');
+                }
+            }
+        },
+        templateUrl: "views/ocorrencia/editar.html",
+        controller: "editarOcorrenciaCtrl"
+    })
         .when("/aluno/", {
             resolve: {
                 'check': function ($location, $window) {
@@ -105,20 +115,30 @@ app.config(function ($routeProvider, $locationProvider) {
             controller: "ocorrenciaAlunoCtrl"
         }).when("/aluno/:id/provas", {
 
-            resolve: {
-                'check': function ($location, $window, $route) {
-                    if ($window.localStorage.getItem("funcaoUsuario") == 3) {
-                        if ($route.current.params.id != JSON.parse($window.localStorage.getItem('usuario')).id || $window.localStorage.getItem("isLoggedin") != 'true') {
+        resolve: {
+            'check': function ($location, $window, $route) {
+                if ($window.localStorage.getItem("funcaoUsuario") == 3) {
+                    if ($route.current.params.id != JSON.parse($window.localStorage.getItem('usuario')).id || $window.localStorage.getItem("isLoggedin") != 'true') {
 
-                            $location.path('/');
-                        }
+                        $location.path('/');
                     }
-
                 }
-            },
-            templateUrl: "views/aluno/prova.html",
-            controller: "provaAlunoCtrl"
-        })
+
+            }
+        },
+        templateUrl: "views/aluno/prova.html",
+        controller: "provaAlunoCtrl"
+    }).when("/aluno/:id/editar", {
+        resolve: {
+            'check': function ($location, $window) {
+                if ($window.localStorage.getItem("isLoggedin") != 'true' || $window.localStorage.getItem("funcaoUsuario") == 3) {
+                    $location.path('/');
+                }
+            }
+        },
+        templateUrl: "views/aluno/editar.html",
+        controller: "editarAlunoCtrl"
+    })
         .when("/servidor/", {
             resolve: {
                 'check': function ($location, $window) {
@@ -174,16 +194,16 @@ app.config(function ($routeProvider, $locationProvider) {
             templateUrl: "views/reuniao/cadastrar.html",
             controller: "cadastrarReuniaoCtrl"
         }).when("/reuniao/relatorio/", {
-            resolve: {
-                'check': function ($location, $window) {
-                    if ($window.localStorage.getItem("isLoggedin") != 'true' || $window.localStorage.getItem("funcaoUsuario") == 3) {
-                        $location.path('/');
-                    }
+        resolve: {
+            'check': function ($location, $window) {
+                if ($window.localStorage.getItem("isLoggedin") != 'true' || $window.localStorage.getItem("funcaoUsuario") == 3) {
+                    $location.path('/');
                 }
-            },
-            templateUrl: "views/reuniao/relatorio.html",
-            controller: "relatorioReuniaoCtrl"
-        })
+            }
+        },
+        templateUrl: "views/reuniao/relatorio.html",
+        controller: "relatorioReuniaoCtrl"
+    })
         .when("/reuniao/:id/", {
             resolve: {
                 'check': function ($location, $window) {
@@ -214,6 +234,36 @@ app.config(function ($routeProvider, $locationProvider) {
         },
         templateUrl: "views/prova/cadastrar.html",
         controller: "CadastrarProvaCtrl"
+    }).when("/turma/", {
+        resolve: {
+            'check': function ($location, $window) {
+                if ($window.localStorage.getItem("isLoggedin") != 'true' || $window.localStorage.getItem("funcaoUsuario") == 3) {
+                    $location.path('/');
+                }
+            }
+        },
+        templateUrl: "views/turma/listar.html",
+        controller: "listarTurmaCtrl"
+    }).when("/turma/cadastrar", {
+        resolve: {
+            'check': function ($location, $window) {
+                if ($window.localStorage.getItem("isLoggedin") != 'true') {
+                    $location.path('/turma/');
+                }
+            }
+        },
+        templateUrl: "views/turma/cadastrar.html",
+        controller: "CadastrarTurmaCtrl"
+    }).when("/turma/editar/:id/", {
+        resolve: {
+            'check': function ($location, $window) {
+                if ($window.localStorage.getItem("isLoggedin") != 'true') {
+                    $location.path('/turma/');
+                }
+            }
+        },
+        templateUrl: "views/turma/editar.html",
+        controller: "CadastrarTurmaCtrl"
     })
 });
 app.run(function ($window, $rootScope) {

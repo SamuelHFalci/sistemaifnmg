@@ -4,7 +4,7 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="adminangular" />
+    <orderEntry type="module" module-name="samuel" />
     <orderEntry type="module" module-name="backend" />
   </component>
 </module>

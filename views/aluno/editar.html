@@ -1,9 +1,9 @@
 <div class="container-fluid">
     <ol class="breadcrumb">
         <li><a href="/sistemaifnmg/#!/aluno/">Aluno</a></li>
-        <li class="active">Cadastrar</li>
+        <li class="active">Editar</li>
     </ol>
-    <p class="h3 text-center">Cadastrar Aluno</p>
+    <p class="h3 text-center">Edição de Aluno</p>
     <form name="formCadastroAluno">
         <div class="col-sm-4">
             <div class="form-group">
@@ -44,14 +44,14 @@
         <div class="col-sm-4">
             <div class="form-group">
                 <label for="telefoneResponsaveis">Telefone Responsaveis</label>
-                <input type="text" class="form-control" id="telefoneResponsaveis" ng-model="aluno.telefoneResponsaveis"
+                <input type="text" class="form-control" id="telefoneResponsaveis" ng-model="aluno.telefone_responsaveis"
                        required>
             </div>
         </div>
         <div class="col-sm-4">
             <div class="form-group">
                 <label for="telefonePessoal">Telefone Pessoal</label>
-                <input type="text" class="form-control" id="telefonePessoal" ng-model="aluno.telefonePessoal" required>
+                <input type="text" class="form-control" id="telefonePessoal" ng-model="aluno.telefone_pessoal" required>
             </div>
         </div>
         <div class="col-sm-6">
@@ -60,15 +60,9 @@
                 <input type="email" class="form-control" id="email" placeholder="Email" ng-model="aluno.email" required>
             </div>
         </div>
-        <div class="col-sm-6">
-            <div class="form-group">
-                <label for="matricula">Senha</label>
-                <input type="password" class="form-control" id="senha" placeholder="Senha" ng-model="aluno.senha"
-                       required>
-            </div>
-        </div>
+
         <div class="col-sm-4 col-sm-offset-4">
-            <button type="submit" class="btn btn-success form-control" ng-click="cadastrarAluno()">Cadastrar Aluno
+            <button type="submit" class="btn btn-success form-control" ng-click="editarAluno()">Alterar Aluno
             </button>
         </div>
 

@@ -60,7 +60,8 @@ class OcorrenciaAlunoController
         return $json;
     }
 
-    public function update($json, $id){
+    public function update($json, $id)
+    {
 
 
         $ocorrencia = $this->getDao()->findOneBy(array('ocorrenciafk' => $json->ocorrenciafk->id, 'alunofk' => $id));
@@ -74,7 +75,13 @@ class OcorrenciaAlunoController
 
 
         $this->getDao()->update($ocorrenciaAluno);
-        return ["mensagem"=>"Aluno inserido com sucesso"];
+        return ["mensagem" => "Aluno inserido com sucesso"];
+    }
+
+    public function delete($id)
+    {
+
+
     }
 
 }

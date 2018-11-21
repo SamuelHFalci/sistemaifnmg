@@ -82,6 +82,40 @@ class OcorrenciaController
         return $id;
     }
 
+    public function update($json, $id)
+    {
+        $ocorrencia = new Ocorrencia();
+        $ocorrencia->setId($id);
+        $ocorrencia->setTitulo($json->titulo);
+        $ocorrencia->setTipo($json->tipo);
+
+        $ocorrencia->setDescricao($json->descricao);
+        $ocorrencia->setData(new \DateTime($json->data));
+        $this->getDao()->update($ocorrencia);
+        $this->setDao(new OcorrenciaAlunoDAO());
+
+        foreach ($json->alunos as $aluno) {
+            $dado = $this->getDao()->findOneBy(array('alunofk' => $aluno->id));
+            if ($dado) {
+                $oaId = $dado->id;
+                $qb = $this->getDao()->createQueryBuilder();
+                $qb->delete('SistemaIfnmg\Entity\OcorrenciaAluno', 'oa');
+                $qb->where("oa.id= $oaId");
+                $qb->getQuery()->execute();
+            }
+
+        }
+        foreach ($json->alunos as $aluno) {
+            $o = new OcorrenciaAluno();
+            $o->setAlunofk($aluno->id);
+            $o->setOcorrenciafk($id);
+            $o->setConfirmacao(0);
+            $this->getDao()->insert($o);
+        }
+
+        return $id;
+    }
+
 }
 
 

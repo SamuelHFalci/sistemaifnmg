@@ -55,7 +55,7 @@ class OcorrenciaAluno
 
     /**
      * Get ocorrenciafk
-     * @return \SistemaIfnmg\Entity\Ocorrencia
+     * @return integer
      */
     public function getOcorrenciafk()
     {
@@ -63,19 +63,17 @@ class OcorrenciaAluno
     }
 
     /**
-     * Set ocorrenciafk
-     * @param \SistemaIfnmg\Entity\Ocorrencia $ocorrenciafk
-     * @return OcorrenciaAluno
+     * @param int $ocorrenciafk
      */
     public function setOcorrenciafk($ocorrenciafk)
     {
         $this->ocorrenciafk = $ocorrenciafk;
-        return $this;
+
     }
 
     /**
      * Get alunofk
-     * @return \SistemaIfnmg\Entity\Aluno
+     * @return integer
      */
     public function getAlunofk()
     {
@@ -84,17 +82,15 @@ class OcorrenciaAluno
 
     /**
      * Set alunofk
-     * @param \SistemaIfnmg\Entity\Aluno $alunofk
-     * @return OcorrenciaAluno
+     * @param int $alunofk
      */
     public function setAlunofk($alunofk)
     {
         $this->alunofk = $alunofk;
-        return $this;
     }
 
     /**
-     * Get id
+     * Get confirmacao
      * @return integer
      */
     public function getConfirmacao()

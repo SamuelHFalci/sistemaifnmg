@@ -56,7 +56,7 @@ class TurmaController
     public function insert($json)
     {
         $turma = new Turma();
-        $turma->setId(0);
+        $turma->setId($json->id);
         $turma->setCodigo($json->codigo);
         $turma->setNome($json->nome);
         $turma->setCurso($json->curso);

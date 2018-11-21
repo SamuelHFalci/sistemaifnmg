@@ -61,6 +61,19 @@ app.controller('navigationCtrl', ['$scope', '$window',
                             link: '/sistemaifnmg/#!/reuniao/relatorio',
                         }
                     ]
+            }, {
+                title: 'Turmas',
+                submenus:
+                    [
+                        {
+                            title: 'Listar',
+                            link: '/sistemaifnmg/#!/turma',
+                        },
+                        {
+                            title: 'Cadastrar',
+                            link: '/sistemaifnmg/#!/turma/cadastrar',
+                        }
+                    ]
             }
 
         ]

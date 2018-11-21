@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <ol class="breadcrumb">
+        <li><a href="/sistemaifnmg/#!/turma/">Turma</a></li>
+        <li class="active">Cadastrar</li>
+    </ol>
+    <p class="h3 text-center">Cadastrar Turma</p>
+    <form name="formCadastroTurma">
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="codigo">Código</label>
+                <input type="text" class="form-control" id="codigo" name="nome" placeholder="Codigo" ng-model="turma.codigo" required>
+
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome" placeholder="Nome"
+                       ng-model="turma.nome" required>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="curso">Curso</label>
+                <input type="text" class="form-control" id="curso" placeholder="Curso"
+                       ng-model="turma.curso" required>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="ano">Ano</label>
+                <input type="text" class="form-control" id="ano" placeholder="ano" ng-model="turma.ano" required>
+            </div>
+        </div>
+
+        <div class="col-sm-4 col-sm-offset-4">
+            <button type="submit" class="btn btn-success form-control" ng-click="cadastrarTurma()">Cadastrar Aluno</button>
+        </div>
+
+    </form>
+</div>

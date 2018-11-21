@@ -1,8 +1,11 @@
 <?php
+
 namespace SistemaIfnmg\Service;
+
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Setup;
 use JMS\Serializer\SerializerBuilder;
+
 class ServiceDefault
 {
     private $entityManager;
@@ -28,7 +31,7 @@ class ServiceDefault
             'password' => 'BuRox2005',
             'host' => 'localhost',
             'driver' => 'pdo_mysql',
-            'charset'=> 'utf8'
+            'charset' => 'utf8'
         );
 
         return EntityManager::create($connectionOptions, $config);
@@ -41,31 +44,42 @@ class ServiceDefault
         return $obj->getId();
     }
 
+    public function merge($obj)
+    {
+        $this->entityManager->merge($obj);
+        $this->entityManager->flush();
+        return $obj->getId();
+    }
+
     public function update($obj)
     {
         $this->entityManager->merge($obj);
         $this->entityManager->flush();
     }
 
-    public function delete($id)
+    public function delete($obj)
     {
-        $this->entityManager->remove($id);
+
+        $this->entityManager->remove($obj);
         $this->entityManager->flush();
     }
 
     public function findById($id)
     {
         $serializer = SerializerBuilder::create()->build();
-       return json_decode($serializer->serialize($this->entityManager->find($this->entityPath, $id), 'json'));
+        return json_decode($serializer->serialize($this->entityManager->find($this->entityPath, $id), 'json'));
     }
 
-    public function findOneBy($dados){
+    public function findOneBy($dados)
+    {
         $serializer = SerializerBuilder::create()->build();
         $collection = $this->entityManager->getRepository($this->entityPath)->findOneBy($dados);
 
         return json_decode($serializer->serialize($collection, 'json'));
     }
-    public function findBy($dados, $ordem){
+
+    public function findBy($dados, $ordem)
+    {
         $serializer = SerializerBuilder::create()->build();
         $collection = $this->entityManager->getRepository($this->entityPath)->findBy($dados, $ordem);
 
@@ -86,6 +100,16 @@ class ServiceDefault
         }
 
         return $data;
+    }
+
+    public function createQueryBuilder()
+    {
+        return $this->entityManager->createQueryBuilder();
+    }
+
+    public function createQuery()
+    {
+        return $this->entityManager->createQuery();
     }
 }
 

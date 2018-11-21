@@ -46,6 +46,19 @@ class Turma
      * @ORM\Column(name="ano", type="string", length=255)
      */
     private $ano;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="modalidade", type="string", length=255)
+     */
+    private $modalidade;
+
+//    /**
+//     * @var \Doctrine\Common\Collections\Collection
+//     * @ORM\OneToMany(targetEntity="SistemaIfnmg\Entity\Aluno", mappedBy="turma")
+//     *
+//     */
+//    private $alunos;
 
 
     /**
@@ -146,6 +159,26 @@ class Turma
     {
         $this->ano = $ano;
     }
+    /**
+     * Get modalidade
+     *
+     * @return string
+     */
+    public function getModalidade()
+    {
+        return $this->modalidade;
+    }
+
+    /**
+     * Set modalidade
+     *
+     * @param string $modalidade
+     */
+    public function setModalidade($modalidade)
+    {
+        $this->modalidade = $modalidade;
+    }
+
 }
 
 ?>

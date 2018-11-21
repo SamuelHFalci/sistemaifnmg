@@ -1,0 +1,33 @@
+<div class="container-fluid">
+    <ol class="breadcrumb">
+        <li><a href="/sistemaifnmg/#!/turma/">Turma</a></li>
+        <li class="active">Listar</li>
+    </ol>
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Procurar Turma:</label>
+            <div class="col-sm-8">
+                <input ng-model="searchText" class="form-control">
+            </div>
+            <div class="col-sm-2"><a class="btn btn-success" href="/sistemaifnmg/#!/turma/cadastrar">Cadastrar</a></div>
+        </div>
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>Nome</th>
+            <th>Curso</th>
+            <th>Ano</th>
+            <th>Alterar</th>
+        </tr>
+        <tr ng-repeat="t in turmas | filter:searchText">
+            <td>{{t.codigo}}</td>
+            <td>{{t.nome}}</td>
+            <td>{{t.curso}}</td>
+            <td>{{t.ano}}</td>
+            <td><a href="/sistemaifnmg/#!/turma/editar/{{t.id}}" class="btn btn-info">alterar</a></td>
+        </tr>
+        </thead>
+    </table>
+</div>

@@ -1,0 +1,91 @@
+<div class="container-fluid">
+    <ol class="breadcrumb">
+        <li><a href="/sistemaifnmg/#!/ocorrencia/">Ocorrência</a></li>
+        <li class="active">Editar</li>
+    </ol>
+    <p class="h3 text-center margin-bottom40">Edição de Ocorrência</p>
+    <div class="col-sm-4">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label for="titulo">Titulo</label>
+                <input type="text" class="form-control" id="titulo" placeholder="Titulo" ng-model="ocorrencia.titulo">
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label for="tipo">Tipo</label>
+                <select ng-model="ocorrencia.tipo" id="tipo" class="form-control">
+                    <option value="1">Não Disciplinar</option>
+                    <option value="2">Disciplinar Leve</option>
+                    <option value="3">Disciplinar Grave</option>
+                    <option value="4">Disciplinar Gravíssima</option>
+                </select>
+
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label for="descricao">Data</label>
+                <input type="date" class="form-control" ng-model="ocorrencia.data" name="data">
+
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label for="descricao">Descrição</label>
+                <textarea class="form-control" id="descricao" placeholder="Descrição" ng-model="ocorrencia.descricao"
+                          rows="5"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label>Procurar Aluno</label>
+                <input ng-model="searchText" type="text" class="form-control" placeholder="Procurar Aluno">
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="tabela-adicionar">
+                <table class="table table-striped">
+                    <tr>
+                        <td>Nome:</td>
+                        <td class="text-right">Adicionar:</td>
+                    </tr>
+                    <tr ng-repeat="aluno in alunos | filter:searchText">
+                        <td>{{aluno.nome}} {{aluno.sobrenome}}</td>
+                        <td class="text-right">
+                            <button class="btn btn-primary" ng-click="adicionarAluno(aluno)"><i
+                                    class="fa fa-plus"></i></button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="col-sm-6">
+
+            <table class="table table-striped">
+                <tr>
+                    <td>Nome:</td>
+                    <td class="text-right">Remover:</td>
+                </tr>
+                <tr ng-repeat="alunoAdicionado in alunosAdicionados">
+                    <td>{{alunoAdicionado.nome}} {{alunoAdicionado.sobrenome}}</td>
+                    <td class="text-right">
+                        <button class="btn btn-danger" ng-click="excluirAluno(alunoAdicionado)"><i
+                                class="fa fa-minus"></i></button>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+
+    <div class="col-sm-12">
+        <div class="col-sm-4">
+        <button class="btn btn-success" ng-click="editarOcorrencia()">Cadastrar Ocorrência</button>
+        </div>
+    </div>
+    </form>
+</div>
+

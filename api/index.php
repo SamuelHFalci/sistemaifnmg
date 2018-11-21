@@ -74,6 +74,10 @@ $app->put('/ocorrenciaaluno/{id}', function ($request, $response, $args) use ($o
     $json = json_decode($request->getBody());
     $ocorrenciaAlunoCtrl->update($json, $args['id']);
 });
+$app->put('/ocorrencia/{id}', function ($request, $response, $args) use ($ocorrenciaCtrl) {
+    $json = json_decode($request->getBody());
+    $ocorrenciaCtrl->update($json, $args['id']);
+});
 $app->get('/servidor/', function ($request, $response, $args) use ($servidorCtrl) {
 
     echo json_encode($servidorCtrl->get());
@@ -118,9 +122,21 @@ $app->post('/login/', function ($request, $response, $args) use ($loginCtrl) {
     $json = json_decode($request->getBody());
     echo $loginCtrl->login($json);
 });
-$app->get('/turma/', function ($request, $response, $args) use ($turmaCtrl) {
 
+$app->get('/turma/', function ($request, $response, $args) use ($turmaCtrl) {
     echo json_encode($turmaCtrl->get());
+});
+$app->get('/turma/{id}', function ($request, $response, $args) use ($turmaCtrl) {
+    echo json_encode($turmaCtrl->get($args['id']));
+});
+$app->post('/turma/', function ($request, $response, $args) use ($turmaCtrl) {
+    $json = json_decode($request->getBody());
+    $turmaCtrl->insert($json);
+});
+
+$app->put('/turma/{id}', function ($request, $response, $args) use ($turmaCtrl) {
+    $json = json_decode($request->getBody());
+    $turmaCtrl->update($json, $args['id']);
 });
 
 $app->get('/', function () {

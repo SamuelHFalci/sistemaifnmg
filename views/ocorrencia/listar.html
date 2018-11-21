@@ -19,6 +19,7 @@
             <th>Tipo</th>
             <th>Descrição da Ocorrencia</th>
             <th>Data</th>
+            <th>Editar</th>
             <th>Alunos Envolvidos</th>
         </tr>
         <tr ng-repeat="o in ocorrencias | filter:searchText">
@@ -26,6 +27,7 @@
             <td>{{o.tipo == 1 ? 'Não Disciplinar' : o.tipo == 2 ? 'Disciplinar Leve' : o.tipo == 3 ?"Disciplinar Grave":"Disciplinar Gravíssima"}}</td>
             <td>{{o.descricao}}</td>
             <td>{{o.data | date: "dd/MM/yyyy"}}</td>
+            <td><a href="/sistemaifnmg/#!/ocorrencia/{{o.id}}/editar" class="fa fa-edit textoPreto"></a></td>
             <td>
                 <a class="btn btn-success" href="/sistemaifnmg/#!/ocorrencia/{{o.id}}">Alunos Envolvidos</a>
             </td>

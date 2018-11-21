@@ -60,10 +60,30 @@ class Aluno
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="SistemaIfnmg\Entity\Turma")
-     * @ORM\JoinColumn(name="turma", referencedColumnName="id")
+     * @ORM\Column(type="integer", length=255)
      */
     private $turma;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cpf", type="string", length=255)
+     */
+    private $cpf;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telefoneResponsaveis", type="string", length=255)
+     */
+    private $telefoneResponsaveis;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telefonePessoal", type="string", length=255)
+     */
+    private $telefonePessoal;
+
+
 
 
     /**
@@ -216,6 +236,83 @@ class Aluno
         return $this->ocorrencias;
     }
 
+    /**
+     * Get turma
+     *
+     * @return \SistemaIfnmg\Entity\Turma
+     */
+    public function getTurma(){
+        return $this->turma;
+    }
+
+    /**
+     * Set turma
+     *
+     * @param Turma $turma
+     */
+    public function setTurma($turma)
+    {
+        $this->turma = $turma;
+    }
+
+    /**
+     * Get cpf
+     *
+     * @return string
+     */
+    public function getCpf()
+    {
+        return $this->cpf;
+    }
+
+    /**
+     * Set cpf
+     *
+     * @param string $cpf
+     */
+    public function setCpf($cpf)
+    {
+        $this->cpf = $cpf;
+    }
+
+    /**
+     * Get telefoneResponsaveis
+     *
+     * @return string
+     */
+    public function getTelefoneResponsaveis()
+    {
+        return $this->telefoneResponsaveis;
+    }
+
+    /**
+     * Set telefoneResponsaveis
+     *
+     * @param string $telefoneResponsaveis
+     */
+    public function setTelefoneResponsaveis($telefoneResponsaveis)
+    {
+        $this->telefoneResponsaveis = $telefoneResponsaveis;
+    }
+    /**
+     * Get telefonePessoal
+     *
+     * @return string
+     */
+    public function getTelefonePessoal()
+    {
+        return $this->telefonePessoal;
+    }
+
+    /**
+     * Set telefonePessoal
+     *
+     * @param string $telefonePessoal
+     */
+    public function setTelefonePessoal($telefonePessoal)
+    {
+        $this->telefonePessoal = $telefonePessoal;
+    }
 
 }
 
