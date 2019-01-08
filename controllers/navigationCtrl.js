@@ -32,8 +32,8 @@ app.controller('navigationCtrl', ['$scope', '$window',
                 title: 'Ocorrências',
                 submenus: [
                     {
-                        title: 'Listar',
-                        link: '/sistemaifnmg/#!/ocorrencia',
+                        title: 'Listar não confirmadas',
+                        link: '/sistemaifnmg/#!/ocorrencias-nao-confirmadas',
                     },
                     {
                         title: 'Cadastrar',

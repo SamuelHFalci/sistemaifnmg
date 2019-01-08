@@ -35,6 +35,7 @@ app.controller('listarTurmaCtrl', ['$scope', '$http', '$window', 'urlApi',
         }, function (response) {
         });
         $scope.editarTurma = function () {
+            console.log($scope.turma);
             if ($scope.formCadastroTurma.$invalid)
                 return;
 

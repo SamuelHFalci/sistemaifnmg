@@ -8,9 +8,10 @@
         <div class="col-sm-12">
             <div class="form-group">
                 <label for="titulo">Titulo</label>
-                <input type="text" class="form-control" id="titulo" placeholder="Titulo" ng-model="ocorrencia.titulo">
+                <input type="text" class="form-control" id="titulo" placeholder="Titulo" ng-model="ocorrencia.titulo" ng-value="ocorrenciarecorrente.esquecimentocarteirinha? 'Esquecimento Carteirinha': ocorrenciarecorrente.saidamaiscedo ? 'Saiu mais cedo': ''">
             </div>
         </div>
+
         <div class="col-sm-12">
             <div class="form-group">
                 <label for="tipo">Tipo</label>

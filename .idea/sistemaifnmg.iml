@@ -4,7 +4,6 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="samuel" />
-    <orderEntry type="module" module-name="backend" />
+    <orderEntry type="module" module-name="sgiIfnmg" />
   </component>
 </module>

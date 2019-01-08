@@ -1,10 +1,13 @@
-app.controller('listarOcorrenciaCtrl', ['$scope', '$http','urlApi',
+app.controller('listarOcorrenciasNaoConfirmadasCtrl', ['$scope', '$http','urlApi',
     function ($scope, $http, urlApi) {
 
 
-        $http.get(urlApi+'/ocorrencia/').then(function (response) {
+        $http.get(urlApi+'/ocorrencias-nao-confirmadas/').then(function (response) {
 
             $scope.ocorrencias = response.data;
+            angular.forEach($scope.ocorrencias, function(value){
+                value.data = new Date(value.data.date);
+            })
         }, function (response) {
 
 
@@ -67,9 +70,9 @@ app.controller('listarOcorrenciaCtrl', ['$scope', '$http','urlApi',
                 $scope.alunos = response.data;
                 $http.get(urlApi+'/ocorrencia/'+$routeParams.id).then(function (response) {
                     $scope.ocorrencia = response.data;
-                    $scope.ocorrencia.data = new Date($scope.ocorrencia.data);
+                    $scope.ocorrencia.data = new Date($scope.ocorrencia.data.date);
                     angular.forEach($scope.ocorrencia.alunos, function(aluno){
-                        $scope.adicionarAluno(aluno.alunofk);
+                        $scope.adicionarAluno(aluno);
                     })
                 }, function (response) {
 
@@ -111,7 +114,6 @@ app.controller('listarOcorrenciaCtrl', ['$scope', '$http','urlApi',
                     url: urlApi+'/ocorrencia/'+$routeParams.id,
                     data: $scope.ocorrencia
                 }).then(function (response) {
-                    console.log(response);
                     $location.path('/ocorrencia/'+response.data);
                 }, function (error) {
                     var data = error.data;
@@ -123,7 +125,9 @@ app.controller('listarOcorrenciaCtrl', ['$scope', '$http','urlApi',
         function ($scope, $http, $window, $routeParams, urlApi) {
 
             $http.get(urlApi+'/ocorrencia/'+ $routeParams.id).then(function (response) {
+
                 $scope.ocorrencia = response.data;
+                $scope.ocorrencia.data = new Date(response.data.data.date);
             });
 
 

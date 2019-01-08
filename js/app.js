@@ -1,4 +1,4 @@
-var app = angular.module("myApp", ["ngRoute", "jlareau.pnotify"]);
+var app = angular.module("myApp", ["ngRoute", "jlareau.pnotify", "dirPagination", "naif.base64"]);
 app.value('urlApi', 'api')
 app.config(function ($routeProvider, $locationProvider) {
     $routeProvider
@@ -22,7 +22,7 @@ app.config(function ($routeProvider, $locationProvider) {
             templateUrl: "views/index.html"
 
         })
-        .when("/ocorrencia/", {
+        .when("/ocorrencias-nao-confirmadas/", {
             resolve: {
                 'check': function ($location, $window) {
                     if ($window.localStorage.getItem("isLoggedin") != 'true' || $window.localStorage.getItem("funcaoUsuario") == 3) {
@@ -30,8 +30,8 @@ app.config(function ($routeProvider, $locationProvider) {
                     }
                 }
             },
-            templateUrl: "views/ocorrencia/listar.html",
-            controller: "listarOcorrenciaCtrl"
+            templateUrl: "views/ocorrencia/listar-nao-confirmadas.html",
+            controller: "listarOcorrenciasNaoConfirmadasCtrl"
         })
 
         .when("/ocorrencia/cadastrar/", {
@@ -253,7 +253,7 @@ app.config(function ($routeProvider, $locationProvider) {
             }
         },
         templateUrl: "views/turma/cadastrar.html",
-        controller: "CadastrarTurmaCtrl"
+        controller: "cadastrarTurmaCtrl"
     }).when("/turma/editar/:id/", {
         resolve: {
             'check': function ($location, $window) {
@@ -263,7 +263,7 @@ app.config(function ($routeProvider, $locationProvider) {
             }
         },
         templateUrl: "views/turma/editar.html",
-        controller: "CadastrarTurmaCtrl"
+        controller: "editarTurmaCtrl"
     })
 });
 app.run(function ($window, $rootScope) {

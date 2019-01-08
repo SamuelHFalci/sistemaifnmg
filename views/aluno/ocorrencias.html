@@ -1,10 +1,18 @@
 <div class="container-fluid">
-    <p class="h2">Aluno: {{ocorrencias.nome+" "+ocorrencias.sobrenome}}</p>
+    <div class="row">
+        <div class="col-sm-2">
+            <img src="images/alunos/{{ocorrencias.matricula}}.jpg" class="img-responsive img-circle"/>
+        </div>
+        <div class="col-sm-10">
+            <p class="h2">Aluno: {{ocorrencias.nome+" "+ocorrencias.sobrenome}}</p>
+        </div>
+    </div>
     <div class="ocorrencias borda margin-bottom20">
         <p class="h3">Ocorrências:</p>
         <table class="table table-striped">
             <thead>
             <tr>
+                <th>Id</th>
                 <th>Titulo</th>
                 <th>Tipo</th>
                 <th>Descrição</th>
@@ -14,13 +22,14 @@
             </thead>
             <tbody>
             <tr ng-repeat="ocorrencia in ocorrencias.ocorrencias">
-                <td>{{ocorrencia.ocorrenciafk.titulo}}</td>
-                <td>{{ocorrencia.ocorrenciafk.tipo == 1 ? 'Não Disciplinar' : ocorrencia.ocorrenciafk.tipo == 2 ?
-                    'Disciplinar Leve' : ocorrencia.ocorrenciafk.tipo == 3 ?"Disciplinar Grave":"Disciplinar Gravíssima"}}
+                <td>{{ocorrencia.id}}</td>
+                <td>{{ocorrencia.titulo}}</td>
+                <td>{{ocorrencia.tipo == 1 ? 'Não Disciplinar' : ocorrencia.tipo == 2 ?
+                    'Disciplinar Leve' : ocorrencia.tipo == 3 ?'Disciplinar Grave':'Disciplinar Gravíssima'}}
                 </td>
-                <td>{{ocorrencia.ocorrenciafk.descricao}}</td>
+                <td>{{ocorrencia.descricao}}</td>
                 <td>
-                    {{ocorrencia.ocorrenciafk.data | date: 'dd/MM/yyyy'}}
+                    {{ocorrencia.data | date: 'dd/MM/yyyy'}}
                 </td>
                 <td ng-if="ocorrencia.confirmacao == 0 && funcaoUsuario == 3">
                     <button class="btn btn-success pull-right" ng-click="confirmarOcorrencia(ocorrencia)"><i
@@ -32,8 +41,8 @@
             </tbody>
         </table>
     </div>
-    <div ng-controller="provaAlunoCtrl" class="borda">
-        <h2>Provas</h2>
+    <h2>Provas</h2>
+    <div class="borda">
         <table class="table table-striped">
             <thead>
             <tr>
@@ -43,7 +52,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="p in provas">
+            <tr ng-repeat="p in ocorrencias.provas">
                 <td>{{p.tema}}</td>
                 <td>{{p.disciplina}}</td>
                 <td>{{p.data | date: "dd/MM/yyyy"}}</td>

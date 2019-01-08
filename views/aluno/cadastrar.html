@@ -54,20 +54,26 @@
                 <input type="text" class="form-control" id="telefonePessoal" ng-model="aluno.telefonePessoal" required>
             </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <div class="form-group">
                 <label for="email">E-mail</label>
                 <input type="email" class="form-control" id="email" placeholder="Email" ng-model="aluno.email" required>
             </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <div class="form-group">
                 <label for="matricula">Senha</label>
                 <input type="password" class="form-control" id="senha" placeholder="Senha" ng-model="aluno.senha"
                        required>
             </div>
         </div>
-        <div class="col-sm-4 col-sm-offset-4">
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="foto">Foto</label>
+                <input type='file' id="foto" ng-model='aluno.foto' base-sixty-four-input>
+            </div>
+        </div>
+        <div class="col-sm-12">
             <button type="submit" class="btn btn-success form-control" ng-click="cadastrarAluno()">Cadastrar Aluno
             </button>
         </div>

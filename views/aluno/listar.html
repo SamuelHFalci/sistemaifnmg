@@ -15,18 +15,20 @@
     <table class="table table-striped">
         <thead>
         <tr>
+            <th></th>
             <th>Nome do Aluno</th>
             <th>Email</th>
-            <th>CPF</th>
             <th>Tel Responsáveis</th>
             <th>Tel Pessoal</th>
             <th>Editar</th>
             <th>Ocorrencias do aluno</th>
         </tr>
-        <tr ng-repeat="a in alunos | filter:searchText">
+        </thead>
+        <tbody>
+        <tr dir-paginate="a in alunos | filter:searchText | itemsPerPage:10">
+            <td class="col-md-1"><img src="images/alunos/{{a.matricula}}.jpg"  class="img-responsive img-circle"/></td>
             <td>{{a.nome + " "+ a.sobrenome}}</td>
             <td>{{a.email}}</td>
-            <td>{{a.cpf}}</td>
             <td>{{a.telefone_responsaveis}}</td>
             <td>{{a.telefone_pessoal}}</td>
             <td><a href="/sistemaifnmg/#!/aluno/{{a.id}}/editar" class="fa fa-edit textoPreto"></a></td>
@@ -34,6 +36,9 @@
                 <a class="fa fa-eye textoPreto text-center" href="/sistemaifnmg/#!/aluno/{{a.id}}"></a>
             </td>
         </tr>
-        </thead>
+        </tbody>
     </table>
+    <div class="text-center">
+        <dir-pagination-controls boundary-links="true" direction-links="true"></dir-pagination-controls>
+    </div>
 </div>

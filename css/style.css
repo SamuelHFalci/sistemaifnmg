@@ -118,3 +118,7 @@ a {
 input.ng-touched.ng-invalid{
     border-color: #F99
 }
+.img-circle{
+    border: 2px solid #2ca02c;
+    box-shadow: 1px 1px 1px #ddd;
+}

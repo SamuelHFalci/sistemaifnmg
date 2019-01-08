@@ -17,7 +17,7 @@ app.controller('listarAlunoCtrl', ['$scope', '$http', '$window', 'urlApi',
                 $scope.turmas = response.data;
             });
             $scope.cadastrarAluno = function () {
-
+                $scope.aluno.foto = $scope.aluno.foto.base64;
                 if ($scope.formCadastroAluno.$invalid)
                     return;
 
@@ -80,6 +80,9 @@ app.controller('listarAlunoCtrl', ['$scope', '$http', '$window', 'urlApi',
             $http.get(urlApi + '/aluno/' + $routeParams.id).then(function (response) {
 
                 $scope.ocorrencias = response.data;
+                angular.forEach($scope.ocorrencias.ocorrencias, function (ocorrencia) {
+                    ocorrencia.data = new Date(ocorrencia.data.date);
+                })
             });
             $scope.confirmarOcorrencia = function (ocorrencia) {
                 ocorrencia.confirmacao = 1;

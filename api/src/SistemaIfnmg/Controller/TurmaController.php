@@ -8,8 +8,6 @@ use SistemaIfnmg\Entity\Turma;
 
 class TurmaController
 {
-    private $dao;
-
     public function __construct()
     {
         $this->setDao(new TurmaDAO());
@@ -61,6 +59,7 @@ class TurmaController
         $turma->setNome($json->nome);
         $turma->setCurso($json->curso);
         $turma->setAno($json->ano);
+        $turma->setModalidade($json->modalidade);
 
         $this->getDao()->insert($turma);
         return ["mensagem" => "Turma inserida com sucesso"];
@@ -74,6 +73,7 @@ class TurmaController
         $turma->setNome($json->nome);
         $turma->setCurso($json->curso);
         $turma->setAno($json->ano);
+        $turma->setModalidade($json->modalidade);
 
         $this->getDao()->update($turma);
         return ["mensagem" => "Turma inserida com sucesso"];

@@ -15,10 +15,10 @@
             <div class="form-group">
                 <label for="tipo">Tipo</label>
                 <select ng-model="ocorrencia.tipo" id="tipo" class="form-control">
-                    <option value="1">Não Disciplinar</option>
-                    <option value="2">Disciplinar Leve</option>
-                    <option value="3">Disciplinar Grave</option>
-                    <option value="4">Disciplinar Gravíssima</option>
+                    <option value="1" ng-selected="ocorrencia.tipo == 1">Não Disciplinar</option>
+                    <option value="2" ng-selected="ocorrencia.tipo == 2">Disciplinar Leve</option>
+                    <option value="3" ng-selected="ocorrencia.tipo == 3">Disciplinar Grave</option>
+                    <option value="4" ng-selected="ocorrencia.tipo == 4">Disciplinar Gravíssima</option>
                 </select>
 
             </div>
@@ -83,7 +83,7 @@
 
     <div class="col-sm-12">
         <div class="col-sm-4">
-        <button class="btn btn-success" ng-click="editarOcorrencia()">Cadastrar Ocorrência</button>
+        <button class="btn btn-success" ng-click="editarOcorrencia()">Atualizar Ocorrência</button>
         </div>
     </div>
     </form>

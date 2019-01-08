@@ -8,7 +8,7 @@ use JMS\Serializer\SerializerBuilder;
 
 class ServiceDefault
 {
-    private $entityManager;
+    protected $entityManager;
     private $entityPath;
 
     public function __construct($entityPath)
@@ -25,6 +25,14 @@ class ServiceDefault
         $devMode = true;
         $config = Setup::createAnnotationMetadataConfiguration($path, $devMode, null, null, FALSE);
 
+//        $connectionOptions = array(
+//            'dbname' => 'sistemaifnmg',
+//            'user' => 'root',
+//            'password' => 'BuRox2005',
+//            'host' => 'localhost',
+//            'driver' => 'pdo_mysql',
+//            'charset' => 'utf8'
+//        );
         $connectionOptions = array(
             'dbname' => 'sistemaifnmg',
             'user' => 'root',

@@ -36,7 +36,7 @@ class AlunoController
 
     public function getProvas($id)
     {
-        $id = $this->getDao()->findById($id)->turma->id;
+
         $this->setDao(new ProvaDAO());
         return $this->getDao()->findBy(array('turmafk' => $id), array('data' => 'asc'));
     }
@@ -53,19 +53,32 @@ class AlunoController
                 $data[] = $obj;
             }
         } else {
-            $obj = $this->getDao()->findById($id);
-            $this->setDao(new OcorrenciaDAO());
-            foreach ($obj->ocorrencias as $key => $ocorrencia) {
-                if ($ocorrencia->alunofk != $id) {
-                    unset($obj->ocorrencias[$key]);
-                }
-                $ocorrencia->ocorrenciafk = $this->getDao()->findById($ocorrencia->ocorrenciafk);
+            $qb = $this->getDao()->createQueryBuilder();
+
+
+
+            $qb->select(array('ocorrencia.id, ocorrencia.titulo, ocorrencia.descricao, ocorrencia.tipo, ocorrencia.data, o.confirmacao,aluno.nome, aluno.sobrenome, aluno.matricula, aluno.turma'))
+                ->from('SistemaIfnmg\Entity\OcorrenciaAluno','o')
+                ->join('SistemaIfnmg\Entity\Ocorrencia', 'ocorrencia', 'WITH', 'ocorrencia.id = o.ocorrenciafk')
+                ->join('SistemaIfnmg\Entity\Aluno', 'aluno', 'WITH', 'aluno.id = o.alunofk')
+                ->where("aluno.id=$id");
+
+
+            $query = $qb->getQuery();
+            $result = $query->getArrayResult();
+
+            $data['nome'] = $result[0]['nome'];
+            $data['sobrenome'] = $result[0]['sobrenome'];
+            $data['matricula'] = $result[0]['matricula'];
+            $turma = $result[0]['turma'];
+
+            foreach ($result as $ocorrencia){
+                unset($ocorrencia['nome']);
+                unset($ocorrencia['sobrenome']);
+                unset($ocorrencia['matricula']);
+                $data['ocorrencias'][] = $ocorrencia;
             }
-            if ($obj != null) {
-                $data = $obj;
-            } else {
-                $data = [];
-            }
+            $data['provas'] = $this->getProvas($turma);
         }
         return $data;
     }

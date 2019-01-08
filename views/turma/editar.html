@@ -5,35 +5,46 @@
     </ol>
     <p class="h3 text-center">Editar Turma</p>
     <form name="formCadastroTurma">
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             <div class="form-group">
                 <label for="codigo">Código</label>
                 <input type="text" class="form-control" id="codigo" name="nome" placeholder="Codigo" ng-model="turma.codigo" required>
 
             </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             <div class="form-group">
                 <label for="nome">Nome</label>
                 <input type="text" class="form-control" id="nome" placeholder="Nome"
                        ng-model="turma.nome" required>
             </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             <div class="form-group">
                 <label for="curso">Curso</label>
                 <input type="text" class="form-control" id="curso" placeholder="Curso"
                        ng-model="turma.curso" required>
             </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             <div class="form-group">
                 <label for="ano">Ano</label>
                 <input type="text" class="form-control" id="ano" placeholder="ano" ng-model="turma.ano" required>
             </div>
         </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="modalidade">Modalidade</label>
+                <select class="form-control" ng-model="turma.modalidade" id="modalidade" required>
+                    <option value="Integrado">Integrado</option>
+                    <option value="Concomitante/Subsequente">Concomitante/Subsequente</option>
+                </select>
 
-        <div class="col-sm-4 col-sm-offset-4">
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <label for=""></label>
             <button type="submit" class="btn btn-success form-control" ng-click="editarTurma()">Editar Turma</button>
         </div>
 

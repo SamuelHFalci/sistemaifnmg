@@ -1,4 +1,5 @@
 <?php
+require "config.php";
 $loader = require __DIR__ . '/vendor/autoload.php';
 
 use SistemaIfnmg\Controller\UsuarioController;
@@ -52,9 +53,9 @@ $app->put('/aluno/{id}', function ($request, $response, $args) use ($alunoCtrl) 
     $json = json_decode($request->getBody());
     $alunoCtrl->update($json, $args['id']);
 });
-$app->get('/ocorrencia/', function ($request, $response, $args) use ($ocorrenciaCtrl) {
+$app->get('/ocorrencias-nao-confirmadas/', function ($request, $response, $args) use ($ocorrenciaCtrl) {
 
-    echo json_encode($ocorrenciaCtrl->get());
+    echo json_encode($ocorrenciaCtrl->getNaoConfirmadas());
 });
 $app->get('/ocorrencia/{id}', function ($request, $response, $args) use ($ocorrenciaCtrl) {
 
